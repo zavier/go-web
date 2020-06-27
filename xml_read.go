@@ -9,7 +9,7 @@ import (
 
 type Recurlyservers struct {
 	XMLName     xml.Name `xml:"servers"`
-	Version     string   `xml:"Version,attr"`
+	Version     string   `xml:"version,attr"`
 	Svs         []server `xml:"server"`
 	Description string   `xml:",innerxml"`
 }
@@ -20,7 +20,7 @@ type server struct {
 	ServerIP   string   `xml:"serverIP"`
 }
 
-func main() {
+func readXml() {
 	file, err := os.Open("servers.xml")
 	if err != nil {
 		fmt.Println("err: %v", err)
@@ -39,4 +39,8 @@ func main() {
 		return
 	}
 	fmt.Println(v)
+}
+
+func main() {
+	readXml()
 }
